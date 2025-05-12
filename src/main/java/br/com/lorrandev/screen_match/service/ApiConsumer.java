@@ -8,10 +8,10 @@ import java.net.http.HttpResponse;
 
 public class ApiConsumer {
 
-    public String takeData(String endereco) {
+    public String takeData(String address) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(endereco))
+                .uri(URI.create(address))
                 .build();
         HttpResponse<String> response = null;
         try {
@@ -22,8 +22,7 @@ public class ApiConsumer {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-
-        String json = response.body();
-        return json;
+        
+        return response.body();
     }
 }
